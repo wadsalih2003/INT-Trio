@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus GPT - AI College Assistant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="logo-text">Campus GPT</div>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item active">
+                        <a href="#dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#timetable">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Class Timetable</span>
+                            <span class="nav-badge">3</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#studyhub">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Study Hub</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#chatbot">
+                            <i class="fas fa-comments"></i>
+                            <span>AI Assistant</span>
+                            <span class="nav-badge">1</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#materials">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Study Materials</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#exams">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Exam Schedules</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#faculty">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <span>Faculty Contacts</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#campus-map">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span>Campus Map</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#emergency">
+                            <i class="fas fa-first-aid"></i>
+                            <span>Emergency Help</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">MUGAHID SALIH</span>
+                        <span class="user-role">Information Technology (IT) </span>
+                    </div>
+                    <button class="user-menu-btn">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <h2>Welcome back, mugahid !</h2>
+                    <p>Here's your academic overview for today</p>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search classes, faculty, events..." id="global-search">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn-notification" id="notification-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                        <button class="btn-profile" id="profile-btn">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <button class="theme-toggle" id="themeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="section-header">
+                    <h2>Academic Dashboard</h2>
+                    <p>Your personalized academic overview and AI insights</p>
+                </div>
+                
+                <!-- Stats Grid -->
+                <div class="dashboard-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: var(--primary);">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">4.2</div>
+                            <div class="stat-label">Current GPA</div>
+                        </div>
+                        <div class="stat-trend trend-up">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+0.3</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: var(--accent);">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">7</div>
+                            <div class="stat-label">Pending Assignments</div>
+                        </div>
+                        <div class="stat-trend trend-down">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>3 urgent</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: var(--warning);">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">14</div>
+                            <div class="stat-label">Days Until Finals</div>
+                        </div>
+                        <div class="stat-trend trend-down">
+                            <i class="fas fa-clock"></i>
+                            <span>Study now</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #28a745;">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">82%</div>
+                            <div class="stat-label">Study Progress</div>
+                        </div>
+                        <div class="stat-trend trend-up">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>+12%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI Insights -->
+                <div class="ai-insights">
+                    <div class="insights-header">
+                        <h3>AI-Powered Insights</h3>
+                        <div class="insight-tags">
+                            <div class="insight-tag">Personalized</div>
+                            <div class="insight-tag">Predictive</div>
+                            <div class="insight-tag">Actionable</div>
+                        </div>
+                    </div>
+                    <div class="insights-grid">
+                        <div class="insight-card">
+                            <div class="insight-title">Study Time Optimization</div>
+                            <div class="insight-desc">Based on your performance, focus more on Data Structures (2hrs/day) and Calculus (1.5hrs/day)</div>
+                            <div class="insight-action">View Study Plan</div>
+                        </div>
+                        <div class="insight-card warning">
+                            <div class="insight-title">Attendance Alert</div>
+                            <div class="insight-desc">Your attendance in Database Systems is at 78%. Below 80% may affect your grade.</div>
+                            <div class="insight-action">Check Schedule</div>
+                        </div>
+                        <div class="insight-card success">
+                            <div class="insight-title">Strong Performance</div>
+                            <div class="insight-desc">You're excelling in Web Development. Consider advanced topics or helping peers.</div>
+                            <div class="insight-action">Explore Resources</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="action-buttons">
+                        <button class="action-btn" onclick="showSection('studyhub')">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span class="action-label">Study Now</span>
+                        </button>
+                        <button class="action-btn" onclick="showSection('chatbot')">
+                            <i class="fas fa-robot"></i>
+                            <span class="action-label">Ask AI</span>
+                        </button>
+                        <button class="action-btn" onclick="showSection('timetable')">
+                            <i class="fas fa-calendar"></i>
+                            <span class="action-label">View Schedule</span>
+                        </button>
+                        <button class="action-btn" onclick="showSection('materials')">
+                            <i class="fas fa-upload"></i>
+                            <span class="action-label">Upload Notes</span>
+                        </button>
+                        <button class="action-btn" onclick="startStudySession('All Courses')">
+                            <i class="fas fa-hourglass-start"></i>
+                            <span class="action-label">Study Timer</span>
+                        </button>
+                        <button class="action-btn" onclick="showSection('campus-map')">
+                            <i class="fas fa-map"></i>
+                            <span class="action-label">Campus Map</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Upcoming Deadlines -->
+                <div class="upcoming-deadlines">
+                    <h3>Upcoming Deadlines</h3>
+                    <div class="deadline-list">
+                        <div class="deadline-item urgent">
+                            <div class="deadline-icon">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <div class="deadline-info">
+                                <div class="deadline-title">Data Structures Project</div>
+                                <div class="deadline-course">CS 301 - Due Tomorrow</div>
+                            </div>
+                            <button class="btn-small" onclick="showSection('studyhub')">Start</button>
+                        </div>
+                        <div class="deadline-item high">
+                            <div class="deadline-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="deadline-info">
+                                <div class="deadline-title">Calculus Problem Set</div>
+                                <div class="deadline-course">MATH 202 - Due in 3 days</div>
+                            </div>
+                            <button class="btn-small" onclick="showSection('studyhub')">Start</button>
+                        </div>
+                        <div class="deadline-item medium">
+                            <div class="deadline-icon">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <div class="deadline-info">
+                                <div class="deadline-title">Web Dev Assignment</div>
+                                <div class="deadline-course">CS 210 - Due in 5 days</div>
+                            </div>
+                            <button class="btn-small" onclick="showSection('studyhub')">Start</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Class Timetable Section -->
+            <section id="timetable" class="content-section">
+                <div class="section-header">
+                    <h2>Class Timetable</h2>
+                    <p>Your weekly class schedule and room locations</p>
+                </div>
+                
+                <!-- Smart Study Plan -->
+                <div class="study-plan-card">
+                    <div class="study-plan-header">
+                        <h3><i class="fas fa-graduation-cap"></i> Smart Study Plan</h3>
+                        <button class="btn-outline" onclick="generateStudyPlan()">
+                            <i class="fas fa-sync-alt"></i> Regenerate
+                        </button>
+                    </div>
+                    <div class="study-sessions">
+                        <div class="study-session high">
+                            <div class="session-header">
+                                <div class="session-course">Data Structures & Algorithms</div>
+                                <div class="session-priority">HIGH</div>
+                            </div>
+                            <div class="session-details">
+                                <div class="session-date">May 15, 2023 • Exam in 3 days</div>
+                                <button class="btn-small" onclick="startStudySession('Data Structures & Algorithms')">
+                                    Start Studying
+                                </button>
+                            </div>
+                        </div>
+                        <div class="study-session high">
+                            <div class="session-header">
+                                <div class="session-course">Calculus II</div>
+                                <div class="session-priority">HIGH</div>
+                            </div>
+                            <div class="session-details">
+                                <div class="session-date">May 17, 2023 • Exam in 5 days</div>
+                                <button class="btn-small" onclick="startStudySession('Calculus II')">
+                                    Start Studying
+                                </button>
+                            </div>
+                        </div>
+                        <div class="study-session medium">
+                            <div class="session-header">
+                                <div class="session-course">Introduction to AI</div>
+                                <div class="session-priority">MEDIUM</div>
+                            </div>
+                            <div class="session-details">
+                                <div class="session-date">May 19, 2023 • Exam in 7 days</div>
+                                <button class="btn-small" onclick="startStudySession('Introduction to AI')">
+                                    Start Studying
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timetable-container">
+                    <div class="tabs">
+                        <div class="tab active" data-tab="monday">Monday</div>
+                        <div class="tab" data-tab="tuesday">Tuesday</div>
+                        <div class="tab" data-tab="wednesday">Wednesday</div>
+                        <div class="tab" data-tab="thursday">Thursday</div>
+                        <div class="tab" data-tab="friday">Friday</div>
+                    </div>
+
+                    <div class="tab-content active" id="monday">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Course</th>
+                                    <th>Instructor</th>
+                                    <th>Location</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="monday-classes">
+                                <tr>
+                                    <td>9:00 AM - 10:30 AM</td>
+                                    <td>Data Structures & Algorithms</td>
+                                    <td>Dr. Sarah Johnson</td>
+                                    <td>Science Building, Room 205</td>
+                                    <td><button class="btn-small" onclick="askAboutClass('Data Structures & Algorithms', 'Dr. Sarah Johnson')">Ask AI</button></td>
+                                </tr>
+                                <tr>
+                                    <td>11:00 AM - 12:30 PM</td>
+                                    <td>Calculus II</td>
+                                    <td>Prof. Michael Chen</td>
+                                    <td>Math Building, Room 101</td>
+                                    <td><button class="btn-small" onclick="askAboutClass('Calculus II', 'Prof. Michael Chen')">Ask AI</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2:00 PM - 3:30 PM</td>
+                                    <td>Introduction to AI</td>
+                                    <td>Dr. Amanda Rodriguez</td>
+                                    <td>Computer Science Building, Room 315</td>
+                                    <td><button class="btn-small" onclick="askAboutClass('Introduction to AI', 'Dr. Amanda Rodriguez')">Ask AI</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-content" id="tuesday">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Course</th>
+                                    <th>Instructor</th>
+                                    <th>Location</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tuesday-classes">
+                                <tr>
+                                    <td>10:00 AM - 11:30 AM</td>
+                                    <td>Web Development</td>
+                                    <td>Prof. David Wilson</td>
+                                    <td>Computer Science Building, Room 210</td>
+                                    <td><button class="btn-small" onclick="askAboutClass('Web Development', 'Prof. David Wilson')">Ask AI</button></td>
+                                </tr>
+                                <tr>
+                                    <td>1:00 PM - 2:30 PM</td>
+                                    <td>Database Systems</td>
+                                    <td>Dr. Lisa Thompson</td>
+                                    <td>Science Building, Room 305</td>
+                                    <td><button class="btn-small" onclick="askAboutClass('Database Systems', 'Dr. Lisa Thompson')">Ask AI</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-content" id="wednesday">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Course</th>
+                                    <th>Instructor</th>
+                                    <th>Location</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="wednesday-classes">
+                                <tr>
+                                    <td>9:00 AM - 10:30 AM</td>
+                                    <td>Data Structures & Algorithms</td>
+                                    <td>Dr. Sarah Johnson</td>
+                                    <td>Science Building, Room 205</td>
+                                    <td><button class="btn-small" onclick="askAboutClass('Data Structures & Algorithms', 'Dr. Sarah Johnson')">Ask AI</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2:00 PM - 3:30 PM</td>
+                                    <td>Computer Networks</td>
+                                    <td>Dr. Robert Brown</td>
+                                    <td>CS Building, Room 320</td>
+                                    <td><button class="btn-small" onclick="askAboutClass('Computer Networks', 'Dr. Robert Brown')">Ask AI</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-content" id="thursday">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Course</th>
+                                    <th>Instructor</th>
+                                    <th>Location</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="thursday-classes">
+                                <tr>
+                                    <td>11:00 AM - 12:30 PM</td>
+                                    <td>Calculus II</td>
+                                    <td>Prof. Michael Chen</td>
+                                    <td>Math Building, Room 101</td>
+                                    <td><button class="btn-small" onclick="askAboutClass('Calculus II', 'Prof. Michael Chen')">Ask AI</button></td>
+                                </tr>
+                                <tr>
+                                    <td>3:00 PM - 4:30 PM</td>
+                                    <td>Software Engineering</td>
+                                    <td>Prof. David Wilson</td>
+                                    <td>CS Building, Room 215</td>
+                                    <td><button class="btn-small" onclick="askAboutClass('Software Engineering', 'Prof. David Wilson')">Ask AI</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-content" id="friday">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Course</th>
+                                    <th>Instructor</th>
+                                    <th>Location</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="friday-classes">
+                                <tr>
+                                    <td>10:00 AM - 11:30 AM</td>
+                                    <td>Web Development Lab</td>
+                                    <td>Prof. David Wilson</td>
+                                    <td>CS Lab, Room 105</td>
+                                    <td><button class="btn-small" onclick="askAboutClass('Web Development Lab', 'Prof. David Wilson')">Ask AI</button></td>
+                                </tr>
+                                <tr>
+                                    <td>1:00 PM - 2:30 PM</td>
+                                    <td>AI Project Session</td>
+                                    <td>Dr. Amanda Rodriguez</td>
+                                    <td>AI Lab, Room 410</td>
+                                    <td><button class="btn-small" onclick="askAboutClass('AI Project Session', 'Dr. Amanda Rodriguez')">Ask AI</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Study Hub Section -->
+            <section id="studyhub" class="content-section">
+                <div class="section-header">
+                    <h2>Study Hub</h2>
+                    <p>Smart study tools and personalized learning resources</p>
+                </div>
+                
+                <div class="study-hub-grid">
+                    <div class="study-sessions">
+                        <h3>Active Study Sessions</h3>
+                        <div class="study-session-card">
+                            <div class="session-header">
+                                <h4>Data Structures & Algorithms</h4>
+                                <div class="session-time">45 min remaining</div>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                            <div class="session-actions">
+                                <button class="btn-small" onclick="pauseStudySession()">
+                                    <i class="fas fa-pause"></i> Pause
+                                </button>
+                                <button class="btn-small" onclick="endStudySession()">
+                                    <i class="fas fa-stop"></i> End
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="study-tools">
+                            <h3>Study Tools</h3>
+                            <div class="tool-card" onclick="openFlashcards()">
+                                <div class="tool-icon">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div class="tool-info">
+                                    <div class="tool-name">AI Flashcards</div>
+                                    <div class="tool-desc">Generate flashcards from your notes</div>
+                                </div>
+                            </div>
+                            <div class="tool-card" onclick="openQuizGenerator()">
+                                <div class="tool-icon">
+                                    <i class="fas fa-question-circle"></i>
+                                </div>
+                                <div class="tool-info">
+                                    <div class="tool-name">Quiz Generator</div>
+                                    <div class="tool-desc">Create practice tests based on weak areas</div>
+                                </div>
+                            </div>
+                            <div class="tool-card" onclick="openStudyGroups()">
+                                <div class="tool-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="tool-info">
+                                    <div class="tool-name">Study Groups</div>
+                                    <div class="tool-desc">Join or create study sessions</div>
+                                </div>
+                            </div>
+                            <div class="tool-card" onclick="openWhiteboard()">
+                                <div class="tool-icon">
+                                    <i class="fas fa-chalkboard"></i>
+                                </div>
+                                <div class="tool-info">
+                                    <div class="tool-name">Virtual Whiteboard</div>
+                                    <div class="tool-desc">Collaborative problem solving</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="study-resources">
+                        <h3>Recommended Resources</h3>
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div class="resource-info">
+                                <div class="resource-title">Data Structures Visualization</div>
+                                <div class="resource-desc">Interactive animations of algorithms</div>
+                                <div class="resource-meta">15 min • Beginner</div>
+                            </div>
+                            <button class="btn-small">View</button>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="resource-info">
+                                <div class="resource-title">Calculus Practice Problems</div>
+                                <div class="resource-desc">Step-by-step solutions with explanations</div>
+                                <div class="resource-meta">30 problems • Intermediate</div>
+                            </div>
+                            <button class="btn-small">Practice</button>
+                        </div>
+                        <div class="resource-card">
+                            <div class="resource-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="resource-info">
+                                <div class="resource-title">Web Development Project</div>
+                                <div class="resource-desc">Build a responsive portfolio website</div>
+                                <div class="resource-meta">2 hours • Advanced</div>
+                            </div>
+                            <button class="btn-small">Start</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Assistant Section -->
+            <section id="chatbot" class="content-section">
+                <div class="section-header">
+                    <h2>AI Campus Assistant</h2>
+                    <p>Get instant answers to your academic questions</p>
+                    <div class="ai-status">
+                        <span class="status-indicator active"></span>
+                        <span>AI Assistant Online</span>
+                    </div>
+                </div>
+                <div class="chatbot-container">
+                    <div class="chat-header">
+                        <div class="chat-title">
+                            <i class="fas fa-robot"></i>
+                            <span>CampusGPT</span>
+                        </div>
+                        <div class="ai-status">
+                            <span class="status-indicator active"></span>
+                            <span>Online</span>
+                        </div>
+                    </div>
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message bot-message">
+                            <div class="message-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <p>👋 Hello! I'm <strong>CampusGPT</strong>, your AI college assistant!</p>
+                                <p>I can help you with:</p>
+                                <ul>
+                                    <li>📅 Class schedules and timetables</li>
+                                    <li>👨‍🏫 Faculty information and contacts</li>
+                                    <li>📝 Exam dates and locations</li>
+                                    <li>🎉 Campus events and activities</li>
+                                    <li>📚 Questions about your course materials</li>
+                                </ul>
+                                <p><strong>Try asking:</strong> "What's my schedule on Monday?" or "Who teaches Data Structures?"</p>
+                                <div class="ai-badge smart">
+                                    <i class="fas fa-brain"></i> SMART AI
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" id="chat-input" placeholder="Ask me anything about campus life..." class="chat-input">
+                        <button id="voice-btn" class="voice-btn" title="Voice Input">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button id="study-timer-btn" class="study-timer-btn" title="Start Study Timer">
+                            <i class="fas fa-hourglass-start"></i>
+                        </button>
+                        <button id="send-message" class="send-button">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Study Materials Section -->
+            <section id="materials" class="content-section">
+                <div class="section-header">
+                    <h2>Study Materials</h2>
+                    <p>Upload and manage your course PDFs and notes</p>
+                </div>
+                <div class="pdf-upload-container">
+                    <div class="upload-area" id="upload-area">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <h3>Upload PDF Notes</h3>
+                        <p>Drag & drop your course PDFs here or click to browse</p>
+                        <p class="upload-note">After uploading, the AI can answer questions about your course content!</p>
+                        <input type="file" id="pdf-file" accept=".pdf" hidden>
+                        <button class="btn" id="browse-btn">Browse Files</button>
+                    </div>
+                    <div class="uploaded-files" id="uploaded-files">
+                        <h4>Uploaded Materials</h4>
+                        <div id="file-list" class="file-list">
+                            <p class="no-files">No PDFs uploaded yet</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ai-analysis">
+                    <h3>AI Content Analysis</h3>
+                    <div class="analysis-cards">
+                        <div class="analysis-card">
+                            <div class="analysis-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="analysis-content">
+                                <h4>Key Concepts</h4>
+                                <p>AI will extract and explain main topics from your documents</p>
+                            </div>
+                        </div>
+                        <div class="analysis-card">
+                            <div class="analysis-icon">
+                                <i class="fas fa-question"></i>
+                            </div>
+                            <div class="analysis-content">
+                                <h4>Generate Questions</h4>
+                                <p>Create practice questions based on your study materials</p>
+                            </div>
+                        </div>
+                        <div class="analysis-card">
+                            <div class="analysis-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div class="analysis-content">
+                                <h4>Smart Search</h4>
+                                <p>Find specific information across all your uploaded files</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Exam Schedules Section -->
+            <section id="exams" class="content-section">
+                <div class="section-header">
+                    <h2>Exam Schedules</h2>
+                    <p>Upcoming examination dates and locations</p>
+                </div>
+                <div class="exams-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Course</th>
+                                <th>Time</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="exam-list">
+                            <tr>
+                                <td>May 15, 2023</td>
+                                <td>Data Structures & Algorithms</td>
+                                <td>9:00 AM - 11:00 AM</td>
+                                <td>Science Building, Room 205</td>
+                                <td><span class="schedule-status upcoming">Upcoming</span></td>
+                                <td><button class="btn-small" onclick="startStudySession('Data Structures & Algorithms')">Study</button></td>
+                            </tr>
+                            <tr>
+                                <td>May 17, 2023</td>
+                                <td>Calculus II</td>
+                                <td>1:00 PM - 3:00 PM</td>
+                                <td>Main Hall, Room 101</td>
+                                <td><span class="schedule-status upcoming">Upcoming</span></td>
+                                <td><button class="btn-small" onclick="startStudySession('Calculus II')">Study</button></td>
+                            </tr>
+                            <tr>
+                                <td>May 19, 2023</td>
+                                <td>Introduction to AI</td>
+                                <td>10:00 AM - 12:00 PM</td>
+                                <td>Computer Science Building, Room 315</td>
+                                <td><span class="schedule-status upcoming">Upcoming</span></td>
+                                <td><button class="btn-small" onclick="startStudySession('Introduction to AI')">Study</button></td>
+                            </tr>
+                            <tr>
+                                <td>May 22, 2023</td>
+                                <td>Web Development</td>
+                                <td>2:00 PM - 4:00 PM</td>
+                                <td>Computer Science Building, Room 210</td>
+                                <td><span class="schedule-status upcoming">Upcoming</span></td>
+                                <td><button class="btn-small" onclick="startStudySession('Web Development')">Study</button></td>
+                            </tr>
+                            <tr>
+                                <td>May 24, 2023</td>
+                                <td>Database Systems</td>
+                                <td>9:00 AM - 11:00 AM</td>
+                                <td>Science Building, Room 305</td>
+                                <td><span class="schedule-status upcoming">Upcoming</span></td>
+                                <td><button class="btn-small" onclick="startStudySession('Database Systems')">Study</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="exam-prep">
+                    <h3>Exam Preparation Tools</h3>
+                    <div class="prep-tools">
+                        <div class="prep-tool">
+                            <i class="fas fa-brain"></i>
+                            <h4>AI Study Plan</h4>
+                            <p>Personalized study schedule based on your exam dates</p>
+                            <button class="btn-small">Generate</button>
+                        </div>
+                        <div class="prep-tool">
+                            <i class="fas fa-clock"></i>
+                            <h4>Time Management</h4>
+                            <p>Optimize your study sessions for maximum efficiency</p>
+                            <button class="btn-small">Optimize</button>
+                        </div>
+                        <div class="prep-tool">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Progress Tracking</h4>
+                            <p>Monitor your preparation and identify weak areas</p>
+                            <button class="btn-small">Track</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Faculty Contacts Section -->
+            <section id="faculty" class="content-section">
+                <div class="section-header">
+                    <h2>Faculty Directory</h2>
+                    <p>Contact information and office hours</p>
+                </div>
+                <div class="faculty-grid" id="faculty-list">
+                    <div class="faculty-card">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="Dr. Sarah Johnson" class="faculty-img">
+                        <h3>Dr. Sarah Johnson</h3>
+                        <p>Computer Science</p>
+                        <p>Data Structures, Algorithms</p>
+                        <div class="contact-info">
+                            <a href="mailto:sjohnson@university.edu" title="Email"><i class="fas fa-envelope"></i></a>
+                            <a href="#" title="Phone"><i class="fas fa-phone"></i></a>
+                            <a href="#" title="Office Hours"><i class="fas fa-calendar-alt"></i></a>
+                        </div>
+                        <div class="office-hours">
+                            <strong>Office Hours:</strong> Mon/Wed 2-4 PM
+                        </div>
+                    </div>
+                    <div class="faculty-card">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Prof. Michael Chen" class="faculty-img">
+                        <h3>Prof. Michael Chen</h3>
+                        <p>Mathematics</p>
+                        <p>Calculus, Linear Algebra</p>
+                        <div class="contact-info">
+                            <a href="mailto:mchen@university.edu" title="Email"><i class="fas fa-envelope"></i></a>
+                            <a href="#" title="Phone"><i class="fas fa-phone"></i></a>
+                            <a href="#" title="Office Hours"><i class="fas fa-calendar-alt"></i></a>
+                        </div>
+                        <div class="office-hours">
+                            <strong>Office Hours:</strong> Tue/Thu 1-3 PM
+                        </div>
+                    </div>
+                    <div class="faculty-card">
+                        <img src="https://i.pravatar.cc/150?img=11" alt="Dr. Amanda Rodriguez" class="faculty-img">
+                        <h3>Dr. Amanda Rodriguez</h3>
+                        <p>Computer Science</p>
+                        <p>Artificial Intelligence, Machine Learning</p>
+                        <div class="contact-info">
+                            <a href="mailto:arodriguez@university.edu" title="Email"><i class="fas fa-envelope"></i></a>
+                            <a href="#" title="Phone"><i class="fas fa-phone"></i></a>
+                            <a href="#" title="Office Hours"><i class="fas fa-calendar-alt"></i></a>
+                        </div>
+                        <div class="office-hours">
+                            <strong>Office Hours:</strong> Mon/Fri 10-12 PM
+                        </div>
+                    </div>
+                    <div class="faculty-card">
+                        <img src="https://i.pravatar.cc/150?img=8" alt="Prof. David Wilson" class="faculty-img">
+                        <h3>Prof. David Wilson</h3>
+                        <p>Computer Science</p>
+                        <p>Web Development, UI/UX Design</p>
+                        <div class="contact-info">
+                            <a href="mailto:dwilson@university.edu" title="Email"><i class="fas fa-envelope"></i></a>
+                            <a href="#" title="Phone"><i class="fas fa-phone"></i></a>
+                            <a href="#" title="Office Hours"><i class="fas fa-calendar-alt"></i></a>
+                        </div>
+                        <div class="office-hours">
+                            <strong>Office Hours:</strong> Wed 3-5 PM
+                        </div>
+                    </div>
+                    <div class="faculty-card">
+                        <img src="https://i.pravatar.cc/150?img=12" alt="Dr. Lisa Thompson" class="faculty-img">
+                        <h3>Dr. Lisa Thompson</h3>
+                        <p>Computer Science</p>
+                        <p>Database Systems, SQL</p>
+                        <div class="contact-info">
+                            <a href="mailto:lthompson@university.edu" title="Email"><i class="fas fa-envelope"></i></a>
+                            <a href="#" title="Phone"><i class="fas fa-phone"></i></a>
+                            <a href="#" title="Office Hours"><i class="fas fa-calendar-alt"></i></a>
+                        </div>
+                        <div class="office-hours">
+                            <strong>Office Hours:</strong> Tue/Thu 2-4 PM
+                        </div>
+                    </div>
+                    <div class="faculty-card">
+                        <img src="https://i.pravatar.cc/150?img=15" alt="Dr. Robert Brown" class="faculty-img">
+                        <h3>Dr. Robert Brown</h3>
+                        <p>Computer Science</p>
+                        <p>Computer Networks, Security</p>
+                        <div class="contact-info">
+                            <a href="mailto:rbrown@university.edu" title="Email"><i class="fas fa-envelope"></i></a>
+                            <a href="#" title="Phone"><i class="fas fa-phone"></i></a>
+                            <a href="#" title="Office Hours"><i class="fas fa-calendar-alt"></i></a>
+                        </div>
+                        <div class="office-hours">
+                            <strong>Office Hours:</strong> Mon/Wed 11-1 PM
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Campus Map Section -->
+            <section id="campus-map" class="content-section">
+                <div class="section-header">
+                    <h2>Campus Navigation</h2>
+                    <p>Find buildings and get directions</p>
+                </div>
+                <div class="map-container">
+                    <div class="map-controls">
+                        <div class="search-building">
+                            <input type="text" id="building-search" placeholder="Search buildings...">
+                            <button id="search-building-btn"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="building-categories">
+                            <button class="category-btn active" data-category="all">All Buildings</button>
+                            <button class="category-btn" data-category="academic">Academic</button>
+                            <button class="category-btn" data-category="administrative">Administrative</button>
+                            <button class="category-btn" data-category="residential">Residential</button>
+                        </div>
+                    </div>
+                    
+                    <div class="map-content">
+                        <div class="interactive-map">
+                            <svg viewBox="0 0 800 600" class="campus-svg">
+                                <!-- Science Building -->
+                                <rect x="100" y="100" width="120" height="80" class="building academic" data-building="science" data-name="Science Building" data-desc="Computer Science, Physics, Chemistry"/>
+                                <text x="160" y="145" text-anchor="middle">SCI</text>
+                                
+                                <!-- Math Building -->
+                                <rect x="250" y="100" width="100" height="80" class="building academic" data-building="math" data-name="Math Building" data-desc="Mathematics Department"/>
+                                <text x="300" y="145" text-anchor="middle">MATH</text>
+                                
+                                <!-- CS Building -->
+                                <rect x="380" y="100" width="120" height="80" class="building academic" data-building="cs" data-name="Computer Science Building" data-desc="CS Labs, AI Research Center"/>
+                                <text x="440" y="145" text-anchor="middle">CS</text>
+                                
+                                <!-- Student Center -->
+                                <rect x="530" y="100" width="150" height="80" class="building administrative" data-building="student-center" data-name="Student Center" data-desc="Cafeteria, Events, Student Services"/>
+                                <text x="605" y="145" text-anchor="middle">STUDENT CTR</text>
+                                
+                                <!-- Library -->
+                                <rect x="100" y="220" width="140" height="80" class="building academic" data-building="library" data-name="University Library" data-desc="Study areas, Books, Research"/>
+                                <text x="170" y="265" text-anchor="middle">LIB</text>
+                                
+                                <!-- Dormitories -->
+                                <rect x="280" y="220" width="100" height="80" class="building residential" data-building="dorm-a" data-name="Dormitory A" data-desc="Student Residence"/>
+                                <text x="330" y="265" text-anchor="middle">DORM A</text>
+                                
+                                <rect x="420" y="220" width="100" height="80" class="building residential" data-building="dorm-b" data-name="Dormitory B" data-desc="Student Residence"/>
+                                <text x="470" y="265" text-anchor="middle">DORM B</text>
+                                
+                                <!-- Paths -->
+                                <path d="M220 180 L220 220" class="path"/>
+                                <path d="M350 180 L350 220" class="path"/>
+                                <path d="M500 180 L500 220" class="path"/>
+                                <path d="M170 300 L280 300" class="path"/>
+                                <path d="M380 300 L420 300" class="path"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="building-info">
+                            <div class="info-placeholder">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <h3>Select a Building</h3>
+                                <p>Click on any building to see details and get directions</p>
+                            </div>
+                            <div class="info-content" style="display: none;">
+                                <h3 id="building-name"></h3>
+                                <p id="building-desc"></p>
+                                <div class="building-actions">
+                                    <button class="btn" id="get-directions">
+                                        <i class="fas fa-directions"></i> Get Directions
+                                    </button>
+                                    <button class="btn" id="find-classes">
+                                        <i class="fas fa-search"></i> Find Classes Here
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Emergency Help Section -->
+            <section id="emergency" class="content-section">
+                <div class="section-header">
+                    <h2>Emergency & Support</h2>
+                    <p>Quick access to campus help and resources</p>
+                </div>
+                <div class="emergency-grid">
+                    <div class="emergency-card critical">
+                        <div class="emergency-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Campus Security</h3>
+                        <p>24/7 Emergency Response</p>
+                        <div class="emergency-contacts">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+1 (555) 123-EMER</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Security Building, Room 101</span>
+                            </div>
+                        </div>
+                        <button class="emergency-btn" onclick="callEmergency('security')">
+                            <i class="fas fa-phone"></i> Call Now
+                        </button>
+                    </div>
+                    
+                    <div class="emergency-card urgent">
+                        <div class="emergency-icon">
+                            <i class="fas fa-first-aid"></i>
+                        </div>
+                        <h3>Health Center</h3>
+                        <p>Medical Emergencies & Care</p>
+                        <div class="emergency-contacts">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+1 (555) 123-HELP</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Mon-Fri: 8AM-6PM</span>
+                            </div>
+                        </div>
+                        <button class="emergency-btn" onclick="callEmergency('health')">
+                            <i class="fas fa-phone"></i> Call Now
+                        </button>
+                    </div>
+                    
+                    <div class="emergency-card important">
+                        <div class="emergency-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Academic Support</h3>
+                        <p>Course Help & Tutoring</p>
+                        <div class="emergency-contacts">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+1 (555) 123-LEARN</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>tutoring@university.edu</span>
+                            </div>
+                        </div>
+                        <button class="emergency-btn" onclick="contactSupport('academic')">
+                            <i class="fas fa-comments"></i> Get Help
+                        </button>
+                    </div>
+                    
+                    <div class="emergency-card info">
+                        <div class="emergency-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Mental Health</h3>
+                        <p>Counseling & Support Services</p>
+                        <div class="emergency-contacts">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+1 (555) 123-CARE</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-globe"></i>
+                                <span>Available 24/7</span>
+                            </div>
+                        </div>
+                        <button class="emergency-btn" onclick="contactSupport('counseling')">
+                            <i class="fas fa-heart"></i> Get Support
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="quick-help-section">
+                    <h3>Quick Help Resources</h3>
+                    <div class="help-buttons">
+                        <button class="help-btn" onclick="showHelpGuide('lost')">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span>I'm Lost</span>
+                        </button>
+                        <button class="help-btn" onclick="showHelpGuide('sick')">
+                            <i class="fas fa-stethoscope"></i>
+                            <span>Feeling Sick</span>
+                        </button>
+                        <button class="help-btn" onclick="showHelpGuide('anxious')">
+                            <i class="fas fa-brain"></i>
+                            <span>Feeling Anxious</span>
+                        </button>
+                        <button class="help-btn" onclick="showHelpGuide('academic')">
+                            <i class="fas fa-book"></i>
+                            <span>Academic Stress</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Study Timer Modal -->
+    <div class="modal" id="studyTimerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Study Timer</h3>
+                <button class="modal-close" onclick="closeStudyTimer()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="timer-display">
+                    <div class="timer-circle">
+                        <div class="timer-text">
+                            <span id="timer-minutes">25</span>:<span id="timer-seconds">00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <button class="btn" id="startTimerBtn" onclick="startTimer()">
+                        <i class="fas fa-play"></i> Start
+                    </button>
+                    <button class="btn" id="pauseTimerBtn" onclick="pauseTimer()" style="display: none;">
+                        <i class="fas fa-pause"></i> Pause
+                    </button>
+                    <button class="btn btn-outline" onclick="resetTimer()">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+                <div class="timer-settings">
+                    <h4>Timer Settings</h4>
+                    <div class="setting-options">
+                        <div class="setting-option active" data-minutes="25">
+                            <span>25 min</span>
+                        </div>
+                        <div class="setting-option" data-minutes="45">
+                            <span>45 min</span>
+                        </div>
+                        <div class="setting-option" data-minutes="60">
+                            <span>60 min</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Panel -->
+    <div class="notification-panel" id="notificationPanel">
+        <div class="notification-header">
+            <h3>Notifications</h3>
+            <button class="notification-close" onclick="closeNotifications()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="notification-list">
+            <div class="notification-item unread">
+                <div class="notification-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-title">Assignment Due Tomorrow</div>
+                    <div class="notification-desc">Data Structures project submission deadline</div>
+                    <div class="notification-time">2 hours ago</div>
+                </div>
+            </div>
+            <div class="notification-item unread">
+                <div class="notification-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-title">Class Cancelled</div>
+                    <div class="notification-desc">Calculus II class cancelled for today</div>
+                    <div class="notification-time">5 hours ago</div>
+                </div>
+            </div>
+            <div class="notification-item">
+                <div class="notification-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-title">Campus Event</div>
+                    <div class="notification-desc">Tech Innovation Fair this Friday</div>
+                    <div class="notification-time">1 day ago</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
